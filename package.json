@@ -12,7 +12,7 @@
   "dependencies": {
     "env-cmd": "^10.1.0",
     "express": "^4.17.1",
-    "joi": "^13.4.0",
+    "joi": "^17.3.0",
     "mongoose": "^5.10.11",
     "nodemon": "^2.0.6"
   }
