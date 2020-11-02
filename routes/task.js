@@ -1,9 +1,10 @@
 const express = require("express");
 const validateObjectID = require("../middleware/validateObjectID");
 const { validateTask, Task } = require("../models/task");
+const auth = require('../middleware/auth');
 const router = express.Router();
 
-router.get("/tasks", async (req, res) => {
+router.get("/tasks/me",auth, async (req, res) => {
   try {
     const tasks = await Task.find();
     res.send(tasks);
@@ -11,6 +12,8 @@ router.get("/tasks", async (req, res) => {
     res.send(e);
   }
 });
+
+
 router.patch("/tasks/:id", validateObjectID, async (req, res) => {
   const { error } = validateTask(req.body);
   if (error) return res.status(400).send(error.details[0].message);
